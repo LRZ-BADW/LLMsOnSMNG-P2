@@ -1,5 +1,7 @@
 # llm-devkit-pvc
 
+[![DOI](https://zenodo.org/badge/1385482963.svg)](https://doi.org/10.5281/zenodo.22941200)
+
 Reference recipe for **GPT pre-training on the Intel Data Center GPU Max 1550
 (Ponte Vecchio / PVC)** using
 [Megatron-DeepSpeed](https://github.com/deepspeedai/Megatron-DeepSpeed) with
