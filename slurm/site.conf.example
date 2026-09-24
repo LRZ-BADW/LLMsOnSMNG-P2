@@ -1,0 +1,45 @@
+# slurm/site.conf — site-specific values for the batch + HPO layer.
+# Copy to slurm/site.conf (gitignored) and fill in for your cluster:
+#   cp slurm/site.conf.example slurm/site.conf
+# Sourced by slurm/jobfile.sh and slurm/submit.sh. No script under slurm/ or
+# tools/hpo/ hardcodes a site value directly — everything routes through here.
+
+# SLURM account to charge (sbatch --account).
+SLURM_ACCOUNT=<your-account>
+
+# Default partition, and a second partition submit.sh switches to for large
+# jobs (see LARGE_NODE_THRESHOLD below). Set both the same if your site has
+# only one queue.
+PARTITION=<your-partition>
+PARTITION_LARGE=<your-large-partition>
+
+# Node count at/above which submit.sh selects PARTITION_LARGE instead of
+# PARTITION. Leave empty to never switch.
+LARGE_NODE_THRESHOLD=
+
+# Extra flags appended verbatim to every sbatch call, e.g.
+# "--qos=high --licenses=scratch". Empty by default.
+EXTRA_SBATCH_ARGS=
+
+# Tiles (accelerator devices) per node. Drives NUM_NODES = WORLD_SIZE /
+# TILES_PER_NODE and the TP <= TILES_PER_NODE check in submit.sh.
+TILES_PER_NODE=8
+
+# Conda activation script and the environment name built by env/build.sh.
+CONDA_ROOT=$HOME/miniforge3/bin/activate
+CONDA_ENV=gpt_pt28
+
+# This repo's root on the compute nodes.
+REPO_DIR=$HOME/llm-devkit-pvc
+
+# Where per-job outputs land: params.csv files, HPO search logs.
+RUNS_DIR=$HOME/llm-devkit-runs
+
+# Root directory for checkpoints; each job writes to
+# ${CHECKPOINT_ROOT_DIR}/${SLURM_JOB_ID}/. Leave empty to disable
+# checkpointing.
+CHECKPOINT_ROOT_DIR=
+
+# Default walltime passed to sbatch when the submitter doesn't override
+# --time.
+DEFAULT_TIME=01:00:00

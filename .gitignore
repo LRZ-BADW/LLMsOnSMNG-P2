@@ -1,0 +1,28 @@
+# training artifacts
+logs/
+experiments/
+*.out
+
+# dataset (fetch/preprocess locally; see docs/DATASET.md)
+dataset/
+*.bin
+*.idx
+
+# generated at runtime
+examples/hostfiles/
+examples/ds_stage*.json
+
+# site-specific config, never committed
+slurm/site.conf
+
+# upstream training code (cloned, not vendored)
+Megatron-DeepSpeed/
+
+# python / conda cruft
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.egg-info/
+
+# vs code cache
+._*

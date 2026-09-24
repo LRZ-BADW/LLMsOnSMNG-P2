@@ -1,0 +1,10 @@
+fixedint
+pudb
+flake8==4.0.1
+regex
+pybind11
+einops
+six
+transformers==4.51.3
+numpy
+setuptools
